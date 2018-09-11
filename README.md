@@ -4,4 +4,4 @@ Simulates an elevator bank
 
 ## Usage
 
-Probalby best to run it inside IntelliJ or your preferred Java IDE
+Probably best to run it inside IntelliJ or your preferred Java IDE
