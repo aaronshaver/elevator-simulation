@@ -1,16 +1,29 @@
 package main.java;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-        String characters = "->";
+        final int startingPopulation = 7;
+        List<Person> persons = new ArrayList<>();
+        for (int i = 0; i < startingPopulation; i++) {
+            Person person = new Person();
+            persons.add(person);
+        }
 
-        for (int i = 0; i < 50; i++) {
+        Building building = new Building();
+        int totalFloors = building.GetTotalFloors();
+        building.PopulateBuilding(persons);
+
+        while (building.GetPopulationCount() > 0) {
             Display.ClearScreen();
-            String output = new String(new char[i]).replace("\0", " ");
-            output += characters;
-            System.out.println(output);
-            Thread.sleep(190);
+            Display.PrintWall(totalFloors);
+//            Display.
+            Display.PrintWall(totalFloors);
+            Display.PrintWaitingAreas(totalFloors, persons);
+            System.out.println();
         }
     }
 }
