@@ -15,15 +15,16 @@ class Display {
         Thread.sleep(20); // pause to prevent screen flashing/tearing
     }
 
-    static void PrintWall(int totalFloors) {
+    static String GetWallOutput(int totalFloors) {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < totalFloors; i++) {
             builder.append("|");
         }
-        System.out.println(builder);
+
+        return builder.toString();
     }
 
-    static void PrintWaitingAreas(int totalFloors, List<Person> persons) {
+    static String GetWaitingAreasOutput(int totalFloors, List<Person> persons) {
         StringBuilder builder = new StringBuilder();
 
         for (int floor = 0; floor < totalFloors; floor++) {
@@ -40,6 +41,16 @@ class Display {
             builder.append(floorContent);
         }
 
-        System.out.println(builder);
+        return builder.toString();
+    }
+
+    static void PrintVertically(int totalFloors, List<String> strings) {
+        for (int i = totalFloors - 1; i >= 0; i--) {
+            StringBuilder builder = new StringBuilder();
+            for (String string : strings) {
+                builder.append(string.charAt(i));
+            }
+            System.out.println(builder);
+        }
     }
 }

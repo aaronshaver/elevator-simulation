@@ -19,11 +19,11 @@ public class Main {
 
         while (building.GetPopulationCount() > 0) {
             Display.ClearScreen();
-            Display.PrintWall(totalFloors);
-//            Display.
-            Display.PrintWall(totalFloors);
-            Display.PrintWaitingAreas(totalFloors, persons);
-            System.out.println();
+            List<String> strings = new ArrayList<>();
+            strings.add(Display.GetWallOutput(totalFloors));
+            strings.add(Display.GetWallOutput(totalFloors));
+            strings.add(Display.GetWaitingAreasOutput(totalFloors, persons));
+            Display.PrintVertically(totalFloors, strings);
         }
     }
 }
