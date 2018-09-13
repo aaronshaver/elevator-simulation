@@ -14,7 +14,7 @@ class Person {
         desiredFloors.add(0); // go home at the end of the day
     }
 
-    int GetCurrentFloor() {
+    int getCurrentFloor() {
         return currentFloor;
     }
 }
