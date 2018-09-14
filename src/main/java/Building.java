@@ -18,7 +18,7 @@ class Building {
     }
 
     int getTotalFloors() {
-        return 9;
+        return 12;
     }
 
     void constructElevators(int elevatorsCount) {

@@ -2,6 +2,7 @@ package main.java;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 class Person {
     private int currentFloor = 0; // start the day on the ground floor
@@ -11,7 +12,7 @@ class Person {
     private List<Integer> desiredFloors = new ArrayList<>();
 
     Person() {
-        desiredFloors.add(3);
+        desiredFloors.add(ThreadLocalRandom.current().nextInt(1, 12));
         desiredFloors.add(0); // go home at the end of the day
     }
 

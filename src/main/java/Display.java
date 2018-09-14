@@ -7,7 +7,7 @@ class Display {
     private boolean spinner = true;
 
     static void clearScreen() throws InterruptedException {
-        Thread.sleep(1300); // pause to enable user to see the screen content for long enough
+        Thread.sleep(500); // pause to enable user to see the screen content for long enough
 
         final int maxClearedLines = 40;
         for (int i = 0; i < maxClearedLines; i++) {

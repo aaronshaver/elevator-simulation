@@ -7,7 +7,7 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
         final int elevatorsCount = 1;
-        final int startingPopulation = 3;
+        final int startingPopulation = 9;
         boolean spinnerState = true;
 
         Building building = new Building();
@@ -46,11 +46,13 @@ public class Main {
     private static void movePersons(Building building) {
 
         // move persons into elevator
+        boolean peopleBoarded = false;
         List<Person> persons = new ArrayList<>(building.getPersons());
         for (Person person : persons) {
             if (person.waiting && !person.isInElevator) {
                 for (Elevator elevator : building.getElevators()) {
                     if (elevator.getCurrentFloor() == person.getCurrentFloor()) {
+                        peopleBoarded = true;
                         person.waiting = false;
                         person.isInElevator = true;
                         building.removePerson(person);
@@ -58,6 +60,10 @@ public class Main {
                     }
                 }
             }
+        }
+
+        if (peopleBoarded) {
+            return; // prevents simultaneous elevator movement and boarding -- don't want to chop heads off ;-)
         }
 
         // move elevators
@@ -88,18 +94,18 @@ public class Main {
                     }
                 }
             }
+        }
 
-            // empty the building of people who don't need to travel anymore
-            List<Person> personsWithNoMoreDesiredFloors = new ArrayList<>();
-            for (Person person : building.getPersons()) {
-                if (person.getDesiredFloors().size() == 0 && !person.isInElevator) {
-                    personsWithNoMoreDesiredFloors.add(person);
-                }
+        // empty the building of people who don't need to travel anymore
+        List<Person> personsWithNoMoreDesiredFloors = new ArrayList<>();
+        for (Person person : building.getPersons()) {
+            if (person.getDesiredFloors().size() == 0 && !person.isInElevator) {
+                personsWithNoMoreDesiredFloors.add(person);
             }
+        }
 
-            for (Person person : personsWithNoMoreDesiredFloors) {
-                building.removePerson(person);
-            }
+        for (Person person : personsWithNoMoreDesiredFloors) {
+            building.removePerson(person);
         }
     }
 }
