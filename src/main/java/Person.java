@@ -11,7 +11,7 @@ class Person {
     private List<Integer> desiredFloors = new ArrayList<>();
 
     Person() {
-        desiredFloors.add(1);
+        desiredFloors.add(3);
         desiredFloors.add(0); // go home at the end of the day
     }
 
@@ -23,8 +23,8 @@ class Person {
         return desiredFloors.get(0);
     }
 
-    int getNumberOfDesiredFloors() {
-        return desiredFloors.size();
+    List<Integer> getDesiredFloors() {
+        return desiredFloors;
     }
 
     void removeMostRecentDesiredFloor() {
