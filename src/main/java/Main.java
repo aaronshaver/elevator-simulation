@@ -38,6 +38,8 @@ public class Main {
     }
 
     private static void movePersons(Building building) {
+
+        // move persons into elevator
         List<Person> persons = new ArrayList<>(building.getPersons());
         for (Person person : persons) {
             if (person.waiting && !person.isInElevator) {
@@ -49,6 +51,41 @@ public class Main {
                         elevator.addPerson(person);
                     }
                 }
+            }
+        }
+
+        // move elevators
+        List<Elevator> elevators = new ArrayList<>(building.getElevators());
+        for (Elevator elevator : elevators) {
+            int currentFloor = elevator.getCurrentFloor();
+            if (elevator.getPassengersCount() > 0) {
+                List<Person> persons2 = new ArrayList<>(elevator.getPassengers());
+                for (Person person : persons2) {
+                    int desiredFloor = person.getNextDesiredFloor();
+                    if (currentFloor < desiredFloor) {
+                        // move up
+                        elevator.setCurrentFloor(currentFloor + 1);
+                        break;
+                    } else if (currentFloor > desiredFloor) {
+                        // move down
+                        elevator.setCurrentFloor(currentFloor - 1);
+                        break;
+                    } else {
+                        // let passenger off
+                        elevator.removePerson(person);
+                        building.addPerson(person);
+                        person.waiting = true;
+                        person.isInElevator = false;
+                        person.removeMostRecentDesiredFloor();
+                        person.setCurrentFloor(currentFloor);
+                    }
+                }
+            }
+        }
+
+        for (Person person : building.getPersons()) {
+            if (person.getNumberOfDesiredFloors() == 0) {
+                building.removePerson(person);
             }
         }
     }

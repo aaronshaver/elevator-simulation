@@ -18,4 +18,20 @@ class Person {
     int getCurrentFloor() {
         return currentFloor;
     }
+
+    int getNextDesiredFloor() {
+        return desiredFloors.get(0);
+    }
+
+    int getNumberOfDesiredFloors() {
+        return desiredFloors.size();
+    }
+
+    void removeMostRecentDesiredFloor() {
+        desiredFloors.remove(0);
+    }
+
+    void setCurrentFloor(int newFloor) {
+        currentFloor = newFloor;
+    }
 }

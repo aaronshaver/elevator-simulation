@@ -11,6 +11,10 @@ class Elevator {
         return currentFloor;
     }
 
+    void setCurrentFloor(int newFloor) {
+        currentFloor = newFloor;
+    }
+
     int getPassengersCount() {
         if (passengers != null && passengers.size() > 0) {
             return passengers.size();
@@ -20,5 +24,13 @@ class Elevator {
 
     void addPerson(Person person) {
         passengers.add(person);
+    }
+
+    void removePerson(Person person) {
+        passengers.remove(person);
+    }
+
+    List<Person> getPassengers() {
+        return passengers;
     }
 }

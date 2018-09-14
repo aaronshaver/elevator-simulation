@@ -38,4 +38,8 @@ class Building {
     void removePerson(Person person) {
         persons.remove(person);
     }
+
+    void addPerson(Person person) {
+        persons.add(person);
+    }
 }
