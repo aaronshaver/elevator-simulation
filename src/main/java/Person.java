@@ -6,6 +6,7 @@ import java.util.List;
 class Person {
     private int currentFloor = 0; // start the day on the ground floor
     boolean waiting = true;
+    boolean isInElevator = false;
 
     private List<Integer> desiredFloors = new ArrayList<>();
 

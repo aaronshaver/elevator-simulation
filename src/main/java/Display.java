@@ -5,7 +5,7 @@ import java.util.List;
 class Display {
 
     static void clearScreen() throws InterruptedException {
-        Thread.sleep(190); // pause to enable user to see the screen content for long enough
+        Thread.sleep(1900); // pause to enable user to see the screen content for long enough
 
         final int maxClearedLines = 40;
         for (int i = 0; i < maxClearedLines; i++) {
