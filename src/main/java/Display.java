@@ -4,6 +4,8 @@ import java.util.List;
 
 class Display {
 
+    private boolean spinner = true;
+
     static void clearScreen() throws InterruptedException {
         Thread.sleep(1900); // pause to enable user to see the screen content for long enough
 
@@ -79,5 +81,17 @@ class Display {
         }
 
         return elevatorColumn.toString();
+    }
+
+    static boolean setAndPrintStatusSpinner(boolean spinnerState) {
+        if (spinnerState) {
+            System.out.println("/");
+            spinnerState = false;
+        } else {
+            System.out.println("\\");
+            spinnerState = true;
+        }
+
+        return spinnerState;
     }
 }

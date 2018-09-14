@@ -8,6 +8,7 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         final int elevatorsCount = 1;
         final int startingPopulation = 3;
+        boolean spinnerState = true;
 
         Building building = new Building();
         int totalFloors = building.getTotalFloors();
@@ -22,6 +23,7 @@ public class Main {
             strings.add(Display.getWallOutput(totalFloors));
             strings.add(Display.getWaitingAreasOutput(totalFloors, building.getPersons()));
             Display.printVertically(totalFloors, strings);
+            spinnerState = Display.setAndPrintStatusSpinner(spinnerState);
 
             movePersons(building);
         }
