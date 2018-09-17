@@ -11,9 +11,9 @@ class Building {
         return persons.size();
     }
 
-    void populateBuilding(int startingPopulation) {
+    void populateBuilding(int startingPopulation, Building building) {
         for (int i = 0; i < startingPopulation; i++) {
-            persons.add(new Person());
+            persons.add(new Person(building));
         }
     }
 

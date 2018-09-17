@@ -11,8 +11,8 @@ class Person {
 
     private List<Integer> desiredFloors = new ArrayList<>();
 
-    Person() {
-        desiredFloors.add(ThreadLocalRandom.current().nextInt(1, 12));
+    Person(Building building) {
+        desiredFloors.add(ThreadLocalRandom.current().nextInt(1, building.getTotalFloors()));
         desiredFloors.add(0); // go home at the end of the day
     }
 
